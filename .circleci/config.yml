@@ -15,7 +15,7 @@ jobs:
           command: ls -al ~/.ba* && akeyless configure --admin-email $admin_email --admin-password $admin_password
       - run:
           name: Fetch Secret
-          command: echo "Hey Dude" >> ~/.bashrc && export myvar=bar && echo "[$myvar]" && akeyless get-secret-value --name my_secret
+          command: echo "echo Hey Dude" >> ~/.bashrc && export myvar=bar && echo "[$myvar]" && akeyless get-secret-value --name my_secret
       - run:
           name: Cleanup
-          command: ps aux --forest && cat ~/.bashrc && rm ~/.akeyless/profiles/default.toml
+          command: ps aux --forest && rm ~/.akeyless/profiles/default.toml
