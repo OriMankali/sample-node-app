@@ -12,7 +12,7 @@ jobs:
           command: mkdir ~/.akeyless && echo -e 'dns="vault.staging.akeyless.dev"\nprotocol="https"' > ~/.akeyless/settings
       - run:
           name: Get Akeyless Token
-          command: akeyless configure --admin-email $admin_email --admin-password aaa
+          command: akeyless configure --admin-email $admin_email --admin-password $admin_password
       - run:
           name: Fetch Secret
-          command: cat ~/.akeyless/profiles/default.toml
+          command: akeyless list-items
