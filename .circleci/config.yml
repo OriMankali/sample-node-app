@@ -4,19 +4,13 @@ jobs:
     docker: 
       - image: mankalo/akeyless_cli # the primary container, where your job's commands are run
     environment:
-      myvar: foo
-      BASH_ENV: ~/.bashrc
+      myvar: akeyless://test
+      BASH_ENV: ~/.akeyless/akeyless_env.sh
     steps:
       - checkout # check out the code in the project directory
       - run:
-          name: Setting Akeyless CLI
-          command: mkdir ~/.akeyless && echo -e 'dns="vault.staging.akeyless.dev"\nprotocol="https"' > ~/.akeyless/settings
-      - run:
           name: Get Akeyless Token
-          command: akeyless configure --admin-email $admin_email --admin-password $admin_password
+          command: akeyless auth --admin-email $admin_email --admin-password $admin_password
       - run:
           name: Fetch Secret
-          command: echo "echo Hey Dude" >> ~/.bashrc && export myvar=bar && echo "[$myvar]" && akeyless get-secret-value --name my_secret
-      - run:
-          name: Cleanup
-          command: cd ~/ && pwd && whoami && rm ~/.akeyless/profiles/default.toml
+          command: echo "test=[$myvar]"
