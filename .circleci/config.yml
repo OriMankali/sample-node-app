@@ -19,4 +19,4 @@ jobs:
           command: echo "echo Hey Dude" >> ~/.bashrc && export myvar=bar && echo "[$myvar]" && akeyless get-secret-value --name my_secret
       - run:
           name: Cleanup
-          command: pwd && whoami && rm ~/.akeyless/profiles/default.toml
+          command: cd ~/ && pwd && whoami && rm ~/.akeyless/profiles/default.toml
