@@ -4,13 +4,13 @@ jobs:
     docker: 
       - image: mankalo/akeyless_cli # the primary container, where your job's commands are run
     environment:
-      myvar: akeyless://test
+      mysecret: akeyless://my_secret
       BASH_ENV: ~/.akeyless/akeyless_env.sh
     steps:
       - checkout # check out the code in the project directory
       - run:
-          name: Get Akeyless Token
+          name: Authenticate to Akeyless
           command: akeyless auth --admin-email $admin_email --admin-password $admin_password
       - run:
           name: Fetch Secret
-          command: bash -x ~/.akeyless/akeyless_env.sh && echo "test=[$myvar]"
+          command: echo "mysecret=[$mysecret]"
