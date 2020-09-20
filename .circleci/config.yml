@@ -12,7 +12,7 @@ jobs:
           command: mkdir ~/.akeyless && echo -e 'dns="vault.staging.akeyless.dev"\nprotocol="https"' > ~/.akeyless/settings
       - run:
           name: Get Akeyless Token
-          command: akeyless configure --admin-email $admin_email --admin-password $admin_password
+          command: ls -al ~/.ba* && akeyless configure --admin-email $admin_email --admin-password $admin_password
       - run:
           name: Fetch Secret
           command: echo "Hey Dude" >> ~/.bashrc && export myvar=bar && echo "[$myvar]" && akeyless get-secret-value --name my_secret
