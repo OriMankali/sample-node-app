@@ -9,13 +9,13 @@ jobs:
       - checkout # check out the code in the project directory
       - run:
           name: Setting Akeyless CLI
-          command: mkdir ~/.akeyless && echo -e 'dns="vault.staging.akeyless.dev"\nprotocol="https"' > ~/.akeyless/settings
+          command: mkdir ~/.akeyless && echo -e 'dns="vault.staging.akeyless.dev"\nprotocol="https"' > ~/.akeyless/settings && export myvar=bar
       - run:
           name: Get Akeyless Token
           command: akeyless configure --admin-email $admin_email --admin-password $admin_password
       - run:
           name: Fetch Secret
-          command: akeyless get-secret-value --name my_secret
+          command: echo "[$myvar]" && akeyless get-secret-value --name my_secret
       - run:
           name: Cleanup
           command: rm ~/.akeyless/profiles/default.toml
