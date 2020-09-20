@@ -15,4 +15,7 @@ jobs:
           command: akeyless configure --admin-email $admin_email --admin-password $admin_password
       - run:
           name: Fetch Secret
-          command: akeyless list-items
+          command: akeyless get-secret-value --name test
+      - run:
+          name: Cleanup
+          command: rm ~/.akeyless/profiles/default.toml
