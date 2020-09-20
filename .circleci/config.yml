@@ -11,5 +11,8 @@ jobs:
           name: Setting Akeyless CLI
           command: mkdir ~/.akeyless && echo -e 'dns="vault.staging.akeyless.dev"\nprotocol="https"' > ~/.akeyless/settings
       - run:
-          name: Test Akeyless CLI
-          command: akeyless -h
+          name: Get Akeyless Token
+          command: akeyless configure --admin-email $admin_email --admin-password $admin_password
+      - run:
+          name: Fetch Secret
+          command: akeyless get-secret-value --name test
