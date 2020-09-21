@@ -2,10 +2,10 @@ version: 2.1
 jobs:
   build:
     docker: 
-      - image: mankalo/akeyless_cli # the primary container, where your job's commands are run
+      - image: akeyless/ci_base
     environment:
       mysecret: akeyless://my_secret
-      BASH_ENV: ~/.akeyless/akeyless_env.sh
+      BASH_ENV: ~/.bashrc
     steps:
       - checkout # check out the code in the project directory
       - run:
