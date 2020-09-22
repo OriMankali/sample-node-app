@@ -5,7 +5,7 @@ jobs:
       - image: akeyless/ci_base
     environment:
       mysecret: akeyless://mySecret
-      demo_secret: akeyless://demo-secret
+      demo_secret: akeyless://AWS_producer
       BASH_ENV: ~/.bashrc
     steps:
       - checkout # check out the code in the project directory
