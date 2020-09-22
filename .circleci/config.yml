@@ -6,7 +6,7 @@ jobs:
     environment:
       mysecret: akeyless://mySecret
       demo_secret: akeyless://AWS_producer
-      #BASH_ENV: ~/.akeyless/akeyless_env.sh
+      BASH_ENV: ~/.akeyless/akeyless_env.sh
     steps:
       - checkout # check out the code in the project directory
       - run:
